@@ -1,2 +1,2 @@
 mkdocs-material>=9.5.0
-
+babel>=2.14.0
