@@ -36,14 +36,7 @@ jobs:
           pip install -r requirements-docs.txt
 
       - name: Build site
-        run: |
-          if ! mkdocs build --verbose 2>&1 | tee /tmp/mkdocs.log; then
-            echo "## ❌ MkDocs Build Failed" >> $GITHUB_STEP_SUMMARY
-            echo '```text' >> $GITHUB_STEP_SUMMARY
-            cat /tmp/mkdocs.log >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-            exit 1
-          fi
+        run: mkdocs build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
