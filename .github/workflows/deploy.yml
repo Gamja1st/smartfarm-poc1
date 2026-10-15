@@ -28,7 +28,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: '3.12'
 
       - name: Install dependencies
         run: |
@@ -36,7 +36,14 @@ jobs:
           pip install -r requirements-docs.txt
 
       - name: Build site
-        run: mkdocs build --verbose
+        run: |
+          if ! mkdocs build --verbose 2>&1 | tee /tmp/mkdocs.log; then
+            echo "## ❌ MkDocs Build Failed" >> $GITHUB_STEP_SUMMARY
+            echo '```text' >> $GITHUB_STEP_SUMMARY
+            cat /tmp/mkdocs.log >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -49,4 +56,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
