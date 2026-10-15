@@ -1,0 +1,84 @@
+site_name: SmartFarm PoC
+site_description: 스마트팜 PoC 프로젝트 문서 및 개발/실험 일지
+site_author: Gamja1st
+site_url: https://Gamja1st.github.io/smartfarm-poc1/
+repo_name: Gamja1st/smartfarm-poc1
+repo_url: https://github.com/Gamja1st/smartfarm-poc1
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: ko
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.action.edit
+  palette:
+    # 라이트 모드
+    - scheme: default
+      primary: teal
+      accent: green
+      toggle:
+        icon: material/brightness-7
+        name: 다크 모드로 전환
+    # 다크 모드
+    - scheme: slate
+      primary: teal
+      accent: green
+      toggle:
+        icon: material/brightness-4
+        name: 라이트 모드로 전환
+
+plugins:
+  - search
+  - blog:
+      blog_dir: blog
+      post_date_format: yyyy-MM-dd
+      post_url_format: "{date}/{slug}"
+      pagination: true
+      categories: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+  - def_list
+
+# 블로그 댓글 시스템 (GitHub Discussions 기반 Giscus 연동용 - 필요시 레포 정보 입력)
+# extra:
+#   comments:
+#     provider: giscus
+#     repo: <username>/smartfarm-poc1
+#     repo_id: <REPO_ID>
+#     category: General
+#     category_id: <CATEGORY_ID>
+
+nav:
+  - 개요: index.md
+  - 개발/실험 일지:
+    - blog/index.md
+  - 요구사항: requirements.md
+  - 아키텍처: architecture/index.md
+  - 실험 계획: experiments/index.md
+  - 장비 인벤토리: inventory.md
+
