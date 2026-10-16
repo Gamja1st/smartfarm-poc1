@@ -5,6 +5,10 @@ site_url: https://Gamja1st.github.io/smartfarm-poc1/
 repo_name: Gamja1st/smartfarm-poc1
 repo_url: https://github.com/Gamja1st/smartfarm-poc1
 
+extra_javascript:
+  - https://unpkg.com/mermaid@11/dist/mermaid.min.js
+  - javascripts/mermaid-init.js
+
 theme:
   name: material
   language: ko
